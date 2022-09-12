@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    background: linear-gradient(233deg, #6f2dbd, #a663cc, #674f8e, #7500e4);
+    background-size: 800% 800%;
+
+    -webkit-animation: bgGradient 31s ease infinite;
+    -moz-animation: bgGradient 31s ease infinite;
+    animation: bgGradient 31s ease infinite;
+}
+
+@-webkit-keyframes bgGradient {
+    0%{background-position:0% 77%}
+    50%{background-position:100% 24%}
+    100%{background-position:0% 77%}
+}
+@-moz-keyframes bgGradient {
+    0%{background-position:0% 77%}
+    50%{background-position:100% 24%}
+    100%{background-position:0% 77%}
+}
+@keyframes bgGradient {
+    0%{background-position:0% 77%}
+    50%{background-position:100% 24%}
+    100%{background-position:0% 77%}
+}
+
+#intro-vid {
+    width: 100vw;
+    height: 98vh;
+    opacity: 1;
+    animation: fade 26s linear;
+    position: absolute;
+}
+
+h1 {
+    margin: 0;
+}
+
+#xyz {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@keyframes fade {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
+}
