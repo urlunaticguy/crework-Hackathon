@@ -4,6 +4,8 @@ body {
     padding: 0;
     background: url("./intro-pic.jpeg");
     background-size: cover;
+    font-family: 'Clash Display', sans-serif;
+    color: white;
 }
 
 #intro-vid {
@@ -28,6 +30,77 @@ main {
     align-items: center;
 }
 
+#xyz{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background: linear-gradient(to bottom left,darkblue, blue,rgb(157, 10, 190), purple,white);
+    background-size: 1000% 1000%;
+    animation: bgGradient 15s ease infinite;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 50px darkblue;
+}
+@keyframes bgGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 51%}
+    100%{background-position:0% 50%}
+}
+#xyz img{
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+#title{
+    display: flex;
+    flex-direction: column;
+    font-weight: 650;
+    font-size: 4rem;
+    text-shadow: 5px 5px 5px darkblue;
+    text-transform: capitalize;
+}
+
+#xyz h3{
+    font-size: 1.5em;
+    margin: 20px;
+    margin-bottom: 15px;
+    text-shadow: 5px 5px 5px black;
+    text-shadow: 5px 5px 5px darkblue;
+}
+#xyz input{
+    width: 190px;
+    height: 25px;
+    outline: none;
+    border: none;
+    font: inherit;
+    padding: 5px 5px ;
+    font-weight: 600;
+    color: darkblue;
+    border-radius: 5px;
+
+}
+#start-btn{
+    margin: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    font-weight: 600;
+    font: inherit;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+}
+#start-btn:hover{
+    background-color: blue;
+    box-shadow: 2px 2px 10px darkblue;
+}
+
 .game-start-elements {
     width: 30vw;
     height: 4vh;
@@ -45,21 +118,6 @@ main {
     border-radius: 9999px;
 }
 
-#start-btn {
-    background-color: blueviolet;
-    width: 15vw;
-    height: 6vh;
-    border-radius: 9999px;
-    border: 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-#start-btn:hover {
-    background-color: darkblue;
-}
-
 #game {
     display: none;
     width: 100vw;
@@ -69,6 +127,7 @@ main {
     justify-content: center;
     align-items: center;
     color: white;
+    margin-top: 50px;
 }
 
 #question {
@@ -77,6 +136,7 @@ main {
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 
 .triangle {
@@ -95,6 +155,10 @@ main {
     height: 0;
     width: 0;
     position: relative;
+}
+
+.triangle-selected {
+    border-color: transparent goldenrod transparent #f9ba06;
 }
 
 #question-text {
@@ -124,6 +188,10 @@ main {
     justify-content: center;
 }
 
+.opt-common {
+    display: flex;
+}
+
 .option {
     background-color: #3e0575;
     width: 22vw;
@@ -141,6 +209,10 @@ main {
 .option:hover {
     color: aquamarine;
     font-weight: bold;
+}
+
+.option-selected {
+    background-color: #f9ba06;
 }
 
 #question-info {
@@ -168,8 +240,12 @@ main {
     padding-top: 15px;
     padding-bottom: 5px;
     position: absolute;
-    top: -43px;
+    top: 54px;
     left: -50px;
+}
+
+.correct-answer {
+    background-color: #f9ba06;
 }
 
 /* fade animation for kbc intro video */

@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KBC</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,500,600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- <video id="intro-vid" autoplay muted>
         <source src="./kbc_intro.mp4" type="video/mp4">
     </video> -->
-    <main>
+    <!-- <main>
         <label id="name-label" for="username" class="game-start-elements">
             Enter your name
         </label>
@@ -19,8 +20,29 @@
         <button id="start-btn" class="game-start-elements">
             Let's Play KBC
         </button>
+    </main> -->
+    <main>
+        <div id="xyz">
+            <img src="./HackerBois.png" alt="hackerBois logo">
+            <h1 id="title">
+                <span> Kaun Banega </span>
+                <span> CreworkPati </span>
+            </h1>
+            <h3 >
+                Enter your name
+            </h3>
+            <input type="text" name="username" id="username">
+            <button id="start-btn"  > 
+                Launch KBC
+
+            </button>
+            <h1> 💸💸💸</h1>
+        </div>
     </main>
     <div id="game">
+        <div id="image" style="position: relative; z-index: -1;">
+            <img style="width: 15vw; top: -150px; left: -100px; position: absolute;" src="./bigb.jpeg" alt="" srcset="">
+        </div>
         <div style="position: relative;">
             <span id="timer-text">30</span>
         </div>
@@ -39,43 +61,60 @@
         </div>
         <div id="options">
             <div class="options-row">
-                <div class="triangle1" style="transform: rotateY(180deg);">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+
+                <div class="option-1 opt-common">
+                    <!-- option 1 -->
+                    <div class="triangle1" style="transform: rotateY(180deg);">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
+                    <div class="option">Option 1</div>
+                    <div class="triangle1">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
                 </div>
-                <div class="option">Option 1</div>
-                <div class="triangle1">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+
+                <div class="option-2 opt-common">
+                    <!-- option 2 -->
+                    <div class="triangle1" style="transform: rotateY(180deg);">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
+                    <div class="option">Option 2</div>
+                    <div class="triangle1">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
                 </div>
-                <div class="triangle1" style="transform: rotateY(180deg);">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
-                </div>
-                <div class="option">Option 2</div>
-                <div class="triangle1">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
-                </div>
+
+                
             </div>
             <div class="options-row">
-                <div class="triangle1" style="transform: rotateY(180deg);">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                <div class="option-3 opt-common">
+                    <!-- option 3 -->
+                    <div class="triangle1" style="transform: rotateY(180deg);">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
+                    <div class="option">Option 3</div>
+                    <div class="triangle1">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
                 </div>
-                <div class="option">Option 3</div>
-                <div class="triangle1">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
-                </div>
-                <div class="triangle1" style="transform: rotateY(180deg);">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
-                </div>
-                <div class="option">Option 4</div>
-                <div class="triangle1">
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
-                    <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+
+                <div class="option-4 opt-common">
+                    <!-- option 4 -->
+                    <div class="triangle1" style="transform: rotateY(180deg);">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
+                    <div class="option">Option 4</div>
+                    <div class="triangle1">
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
+                        <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,5 +125,6 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
     <script src="./app.js"></script>
+    <script src="./game.js"></script>
 </body>
 </html>
