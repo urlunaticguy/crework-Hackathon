@@ -9,20 +9,11 @@
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,500,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- <video id="intro-vid" autoplay muted>
+    <video id="intro-vid" style="display: none;">
         <source src="./kbc_intro.mp4" type="video/mp4">
-    </video> -->
-    <!-- <main>
-        <label id="name-label" for="username" class="game-start-elements">
-            Enter your name
-        </label>
-        <input id="name-input" class="game-start-elements" type="text" name="username" id="username">
-        <button id="start-btn" class="game-start-elements">
-            Let's Play KBC
-        </button>
-    </main> -->
-    <main>
-        <div id="xyz">
+    </video>
+    <main class="flex-jcc align-center">
+        <div id="xyz" class="flex-jcc align-center">
             <img src="./HackerBois.png" alt="hackerBois logo">
             <h1 id="title">
                 <span> Kaun Banega </span>
@@ -39,19 +30,19 @@
             <h1> 💸💸💸</h1>
         </div>
     </main>
-    <div id="game">
+    <div id="game" class="align-center">
         <div id="image" style="position: relative; z-index: -1;">
             <img style="width: 15vw; top: -150px; left: -100px; position: absolute;" src="./bigb.jpeg" alt="" srcset="">
         </div>
         <div style="position: relative;">
-            <span id="timer-text">30</span>
+            <span id="timer-text">60</span>
         </div>
         <div id="question">
             <div class="triangle" style="transform: rotateY(180deg);">
                 <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-28deg); width: 82px; position: absolute;left: -80px;top: 18px;"></div>
                 <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(28deg); width: 82px; position: absolute;left: -80px;top: -20px;"></div>
             </div>
-            <div id="question-text">
+            <div id="question-text" class="flex-jcc align-center">
                 What is the capital of India?
             </div>
             <div class="triangle">
@@ -59,8 +50,8 @@
                 <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-28deg); width: 82px; position: absolute;left: -80px;top: 19px;"></div>
             </div>
         </div>
-        <div id="options">
-            <div class="options-row">
+        <div id="options" class="flex-jcc">
+            <div class="options-row flex-jcc">
 
                 <div class="option-1 opt-common">
                     <!-- option 1 -->
@@ -68,7 +59,7 @@
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
                     </div>
-                    <div class="option">Option 1</div>
+                    <div class="option flex-jcc align-center">Option 1</div>
                     <div class="triangle1">
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
@@ -81,7 +72,7 @@
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
                     </div>
-                    <div class="option">Option 2</div>
+                    <div class="option flex-jcc align-center">Option 2</div>
                     <div class="triangle1">
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
@@ -90,14 +81,14 @@
 
                 
             </div>
-            <div class="options-row">
+            <div class="options-row flex-jcc">
                 <div class="option-3 opt-common">
                     <!-- option 3 -->
                     <div class="triangle1" style="transform: rotateY(180deg);">
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
                     </div>
-                    <div class="option">Option 3</div>
+                    <div class="option flex-jcc align-center">Option 3</div>
                     <div class="triangle1">
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
@@ -110,7 +101,7 @@
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
                     </div>
-                    <div class="option">Option 4</div>
+                    <div class="option flex-jcc align-center">Option 4</div>
                     <div class="triangle1">
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(33deg); width: 46.5px; position: absolute;left: -45px;top: -13.5px;"></div>
                         <div style="border: 1px solid goldenrod;border-radius: 0;transform: rotate(-33deg); width: 46.5px; position: absolute;left: -45px;top: 14.5px;"></div>
@@ -118,13 +109,12 @@
                 </div>
             </div>
         </div>
-        <div id="question-info">
+        <div id="question-info" class="flex-jcc align-center">
             Playing for $500
         </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
     <script src="./app.js"></script>
-    <script src="./game.js"></script>
 </body>
 </html>

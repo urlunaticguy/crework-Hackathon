@@ -8,34 +8,29 @@ body {
     color: white;
 }
 
+.flex-jcc { display: flex; justify-content: center; }
+.align-center { align-items: center;}
+
 #intro-vid {
     width: 100vw;
     height: 98vh;
     opacity: 1;
-    animation: fade 27s linear;
+    animation: fade 26s linear;
     position: absolute;
 }
 
-h1 {
-    margin: 0;
-}
+h1 { margin: 0; }
 
 main {
     width: 100vw;
     height: 98vh;
-    display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: center;
-    align-items: center;
 }
 
-#xyz{
-    display: flex;
+#xyz {
     flex-direction: column;
     padding: 50px;
-    justify-content: center;
-    align-items: center;
     height: 70vh;
     background: linear-gradient(to bottom left,darkblue, blue,rgb(157, 10, 190), purple,white);
     background-size: 1000% 1000%;
@@ -44,17 +39,18 @@ main {
     border-radius: 20px;
     box-shadow: 5px 5px 50px darkblue;
 }
+
 @keyframes bgGradient {
     0%{background-position:0% 50%}
     50%{background-position:100% 51%}
     100%{background-position:0% 50%}
 }
-#xyz img{
+#xyz img {
     width: 120px;
     margin-bottom: 10px;
 }
 
-#title{
+#title {
     display: flex;
     flex-direction: column;
     font-weight: 650;
@@ -63,14 +59,15 @@ main {
     text-transform: capitalize;
 }
 
-#xyz h3{
+#xyz h3 {
     font-size: 1.5em;
     margin: 20px;
     margin-bottom: 15px;
     text-shadow: 5px 5px 5px black;
     text-shadow: 5px 5px 5px darkblue;
 }
-#xyz input{
+
+#xyz input {
     width: 190px;
     height: 25px;
     outline: none;
@@ -80,9 +77,9 @@ main {
     font-weight: 600;
     color: darkblue;
     border-radius: 5px;
-
 }
-#start-btn{
+
+#start-btn {
     margin: 20px;
     padding: 10px 15px;
     border-radius: 5px;
@@ -96,6 +93,7 @@ main {
     cursor: pointer;
     font-weight: bold;
 }
+
 #start-btn:hover{
     background-color: blue;
     box-shadow: 2px 2px 10px darkblue;
@@ -108,9 +106,7 @@ main {
     text-align: center;
 }
 
-#name-label {
-    font-size: 1.5rem;
-}
+#name-label { font-size: 1.5rem; }
 
 #name-input {
     color: black;
@@ -125,7 +121,6 @@ main {
     flex-direction: column;
     gap: 1rem;
     justify-content: center;
-    align-items: center;
     color: white;
     margin-top: 50px;
 }
@@ -164,10 +159,7 @@ main {
 #question-text {
     background-color: #3e0575;
     width: 45vw;
-    display: flex;
-    justify-content: center;
     text-align: center;
-    align-items: center;
     border-bottom: 2px solid goldenrod;
     border-top: 2px solid goldenrod;
 }
@@ -176,29 +168,21 @@ main {
     width: 60vw;
     text-align: center;
     font-size: 1.5rem;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1.5rem;
 }
 
-.options-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+.options-row { width: 100%; }
 
 .opt-common {
     display: flex;
+    height: 5rem;
 }
 
 .option {
     background-color: #3e0575;
     width: 22vw;
     height: 3.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 1.2rem;
     border-bottom: 2px solid goldenrod;
     border-top: 2px solid goldenrod;
@@ -221,9 +205,6 @@ main {
     background-color: #3e0575;
     border-radius: 9999px;
     font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 1px solid goldenrod;
 
 }
@@ -235,10 +216,7 @@ main {
     border: 3px solid goldenrod;
     border-bottom: 0;
     font-size: 2rem;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 15px;
-    padding-bottom: 5px;
+    padding: 15px 30px 5px 30px;
     position: absolute;
     top: 54px;
     left: -50px;
