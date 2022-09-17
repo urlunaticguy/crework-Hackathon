@@ -10,7 +10,10 @@ const opt3 = document.querySelector(".option-3")
 const opt4 = document.querySelector(".option-4")
 const opts = [opt1, opt2, opt3, opt4]
 const timer = document.querySelector("#timer-text")
-let seconds = 3
+const username = document.querySelector("#username")
+const questionInfo = document.querySelector("#question-info")
+const prizeWon = document.querySelector("#prize-won")
+let seconds = 3, money = 0, gameStarted = 0
 const suspense = new Audio("suspense.mp3")
 const lock = new Audio("lock.mp3")
 const right = new Audio("correct.mp3")
@@ -19,13 +22,15 @@ const wrong = new Audio("wrong.mp3")
 const optionColors = {
     4 : ["transparent goldenrod transparent #3e0575", "#3e0575"], //violet
     0 : ["transparent goldenrod transparent #f9ba06", "#f9ba06"], //yellow
-    1 : ["transparent goldenrod transparent green", "green", "white"],
-    2 : ["transparent goldenrod transparent red", "red", "white"],
+    1 : ["transparent goldenrod transparent green", "green", "white"], //green
+    2 : ["transparent goldenrod transparent red", "red", "white"], //red
 }
 
 startButton.addEventListener("click", () => { //start game on button press
+    questionInfo.innerHTML = username.value + " Playing"
+    if (username.value == "") { questionInfo.innerHTML = "Guest Playing" }
     threeTwoOneStart()
-
+    gameStarted++
     setTimeout(() => { //hide the video after playing it
         main.style.display = "none";
         videoDiv.style.display = "flex";
@@ -41,41 +46,58 @@ startButton.addEventListener("click", () => { //start game on button press
     }, 30000);
 })
 
+function changeColorOfOptions(t, elements) {
+    elements[0].style.borderColor = optionColors[t][0]
+    elements[1].style.backgroundColor = optionColors[t][1]
+    elements[2].style.borderColor = optionColors[t][0]
+}
+
 let io = 0 //flagship question traversal counter - do not touch
 
 game.addEventListener("click", (e) => {
     let flag = true
-    console.log(e.target)
     let hasClass = e.target.classList.contains("option")
-    console.log(hasClass)
     let parent = e.target.parentElement
     let childs = parent.children
     let userAnswer = childs[1].innerHTML
+    console.log(userAnswer)
     suspense.pause()
     suspense.currentTime = 0
 
     if (hasClass) {
         //setting yellow on click
-        childs[0].style.borderColor = optionColors[0][0]
-        childs[1].style.backgroundColor = optionColors[0][1]
-        childs[2].style.borderColor = optionColors[0][0]
+        let splCaseFlag = false
+        changeColorOfOptions(0, childs) //0 for yellow
         lock.play()
+        if (userAnswer.indexOf("&nbsp;") > -1) {
+            let kol = userAnswer.slice(0,-6)
+            console.log("space detected")
+            userAnswer = kol
+            let jol = correctAns[(io - 1)].slice(0,-1)
+            splCaseFlag = kol == jol
+            console.log(`comparison bt kol and jol ${splCaseFlag}`)
+        }
 
-        if (userAnswer == correctAns[(io - 1)]) {
+        if ((userAnswer == correctAns[(io - 1)])||(splCaseFlag)) {
+            splCaseFlag = false
             console.log("Correct answer")
             setTimeout(() => { //setting green
                 lock.pause()
                 lock.currentTime = 0
                 right.play()
-                childs[0].style.borderColor = optionColors[1][0]
-                childs[1].style.backgroundColor = optionColors[1][1]
-                childs[2].style.borderColor = optionColors[1][0]
+                changeColorOfOptions(1, childs) //1 for green
             }, 3000);
+            setTimeout(() => {
+                money = money + 1000
+                prizeWon.style.display = "flex"
+                prizeWon.innerHTML = "$ " + money
+            }, 4500);
+            setTimeout(() => {
+                prizeWon.style.display = "none"
+            }, 8000);
             setTimeout(() => { //setting back to purple
-                childs[0].style.borderColor = optionColors[4][0]
-                childs[1].style.backgroundColor = optionColors[4][1]
-                childs[2].style.borderColor = optionColors[4][0]
-            }, 9000);
+                changeColorOfOptions(4, childs) //4 for purple
+            }, 10000);
         } else {
             console.log("Wrong answer")
             flag = false
@@ -83,39 +105,48 @@ game.addEventListener("click", (e) => {
                 lock.pause()
                 lock.currentTime = 0
                 wrong.play()
-                childs[0].style.borderColor = optionColors[2][0]
-                childs[1].style.backgroundColor = optionColors[2][1]
-                childs[2].style.borderColor = optionColors[2][0]
+                changeColorOfOptions(2, childs) //2 for red
             }, 3000);
+            setTimeout(() => {
+                prizeWon.style.display = "flex"
+                prizeWon.innerHTML = "You won $ " + money
+                money = 0
+            }, 4500);
+            setTimeout(() => {
+                prizeWon.style.display = "none"
+            }, 8000);
             setTimeout(() => { //setting back to purple
-                childs[0].style.borderColor = optionColors[4][0]
-                childs[1].style.backgroundColor = optionColors[4][1]
-                childs[2].style.borderColor = optionColors[4][0]
-            }, 9000);
+                changeColorOfOptions(4, childs) //4 for purple
+            }, 10000);
         }
         stopQuestionTimer()
         if ((io < 10)&&(flag)) {
             setTimeout(() => {
                 l()
                 startQuestionTimer()
-            }, 9000);
-        } else {
-            //game reaches last question
+            }, 10000);
+        } else { //game reaches last question or answered wrong
             setTimeout(() => {
                 game.style.display = "none";
-            }, 9000);
+                main.style.display = "flex"
+                startButton.textContent = "Launch KBC"
+                seconds = 3
+                io = (gameStarted * 10)
+                callingQnAFromAPI(10)
+                username.value = ""
+            }, 10000);
         }
     }
 })
 
-function threeTwoOneStart() {
+function threeTwoOneStart() { //timer for launch kbc button
     tto = setInterval(() => {
         startButton.textContent = `Starting in ${seconds}`
         seconds--
     }, 1000)
 }
 
-function stopTTO() {
+function stopTTO() { //stop timer for launch kbc button
     clearInterval(tto)
 }
 
@@ -123,22 +154,33 @@ function startQuestionTimer() {
     let ss = 60
     qt = setInterval(() => { //countdowning the timer
         timer.textContent = ss
-        if (ss == 0) {
-            //timer runs out of time
+        if (ss == 0) { //timer runs out of time
             stopQuestionTimer()
             setTimeout(() => {
                 game.style.display = "none";
+                suspense.pause()
+                suspense.currentTime = 0
+                prizeWon.style.display = "flex"
+                prizeWon.innerHTML = "You won $ " + money
+                money = 0
             }, 1500);
+            setTimeout(() => {
+                prizeWon.style.display = "none"
+                main.style.display = "flex"
+                startButton.textContent = "Launch KBC"
+                seconds = 3
+                io = (gameStarted * 10)
+                callingQnAFromAPI(10)
+                username.value = ""
+            }, 5000);
         }
         ss--
     }, 1000);
 }
 
-function stopQuestionTimer() {
-    clearInterval(qt)
-}
+function stopQuestionTimer() { clearInterval(qt) }
 
-function shuffle (arr) {
+function shuffle (arr) { //shuffle the options order
     var j, x, index;
     for (index = arr.length - 1; index > 0; index--) {
         j = Math.floor(Math.random() * (index + 1));
@@ -160,29 +202,17 @@ function callingQnAFromAPI(x) {
             .then((res) => { 
                 count++
                 jsonArr.push(res.data[0].question)
-                let arr = [checkForEndSpace(res.data[0].correctAnswer), checkForEndSpace(res.data[0].incorrectAnswers[0]), checkForEndSpace(res.data[0].incorrectAnswers[1]), checkForEndSpace(res.data[0].incorrectAnswers[2])]
+                let arr = [res.data[0].correctAnswer, res.data[0].incorrectAnswers[0], res.data[0].incorrectAnswers[1], res.data[0].incorrectAnswers[2]]
                 optionsArr.push(shuffle(arr))
-                correctAns.push(checkForEndSpace(res.data[0].correctAnswer))
-                console.log(`Correct Answer is ${checkForEndSpace(res.data[0].correctAnswer)}`)
+                correctAns.push(res.data[0].correctAnswer)
+                console.log(`Correct Answer is ${res.data[0].correctAnswer}`)
                 console.log(`api called ${count} times`)
             })
     }
 }
 callingQnAFromAPI(10)
 
-console.log()
-function checkForEndSpace(string) {
-    let str = JSON.stringify(string)
-    if (str.slice(-2) == ` "`) {
-        console.log("reducing string")
-        return str.slice(1, (str.length - 2))
-    } else {
-        return str.slice(1, (str.length - 1))
-    }
-}
-
-console.log(jsonArr)
-
+console.log(jsonArr); console.log(correctAns)
 function l() {
     q(io)
     io++
@@ -195,5 +225,4 @@ function q(ioo) {
     option[2].textContent = optionsArr[ioo][2]
     option[3].textContent = optionsArr[ioo][3]
     suspense.play()
-    suspense.loop = true
-}
+    suspense.loop = true }

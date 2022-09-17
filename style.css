@@ -176,7 +176,6 @@ main {
 
 .opt-common {
     display: flex;
-    height: 5rem;
 }
 
 .option {
@@ -224,6 +223,23 @@ main {
 
 .correct-answer {
     background-color: #f9ba06;
+}
+
+#prize-won {
+    position: absolute;
+    background-color: #3e0575;
+    width: 57vw;
+    height: 10rem;
+    top: 200px;
+    left: -400px;
+    z-index: 2;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-size: 3rem;
+    font-weight: lighter;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 /* fade animation for kbc intro video */
