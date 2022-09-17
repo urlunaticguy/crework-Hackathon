@@ -4,9 +4,21 @@ body {
     padding: 0;
     background: url("./kbc_cut.png");
     backdrop-filter: blur(3px);
-    background-size: contain;
+    background-size: cover;
     font-family: 'Clash Display', sans-serif;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: lighter;
 }
 
 .flex-jcc { display: flex; justify-content: center; }
@@ -40,7 +52,7 @@ main {
     animation: bgGradient 15s ease infinite;
     letter-spacing: 1px;
     border-radius: 20px;
-    box-shadow: 5px 5px 50px darkblue;
+    box-shadow: 5px 5px 50px black;
 }
 
 @keyframes bgGradient {
@@ -193,7 +205,7 @@ main {
     font-weight: lighter;
 }
 
-.option:hover {
+.option:hover, .play-again:hover {
     color: rgb(255, 153, 0);
     font-weight: bold;
 }
@@ -275,6 +287,39 @@ main {
     border-bottom: 5px solid gold;
     margin-bottom: 10px;
     font-size: 2rem;
+}
+
+.winning-screen {
+    display: none;
+    height: 30rem;
+    width: 30rem;
+    text-align: center;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #3e0575;
+    border: 3px solid goldenrod;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+  
+.winning-screen > p {
+    font-size: 3rem;
+    color: goldenrod;
+    margin: 0%;
+}
+  
+.play-again {
+    font-size: 1rem;
+    padding: 10px;
+    width: 15rem;
+    color: white;
+    background-color: #3e0575;
+    border: 3px solid goldenrod;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 /* fade animation for kbc intro video */

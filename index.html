@@ -23,12 +23,16 @@
                 Enter your name
             </h3>
             <input type="text" name="username" id="username">
-            <button id="start-btn"  > 
+            <button id="start-btn"  onclick="startGame(0)"> 
                 Launch KBC
 
             </button>
             <h1>💸💸💸</h1>
             <h4>Please turn on Volume for sound effects</h4>
+            <h4>Created by
+            <a href="https://github.com/suhailmshaik" target="_blank">© Suhail </a>
+            <a href="https://github.com/0xShashank7" target="_blank">© Shashank </a>
+            <a href="https://github.com/urlunaticguy" target="_blank">© Souvik </a></h4>
         </div>
     </main>
     <div id="game" class="align-center">
@@ -155,6 +159,15 @@
             </div>
         </div>
     </div>
+
+    <div class="winning-screen">
+        <p class="winning-text">
+          You are now the CreworkPati <br />
+          $500,000
+        </p>
+        <button class="play-again" onclick="startGame(1)">Play again</button>
+    </div>
+      
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
     <script src="./app.js"></script>

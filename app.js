@@ -14,6 +14,7 @@ const username = document.querySelector("#username");
 const namee = document.querySelector("#name");
 const prizeWon = document.querySelector("#prize-won");
 const prizeHighlighter = document.querySelector("#question-info");
+const winningScreen = document.querySelector(".winning-screen");
 let seconds = 3,
   money = 0,
   gameStarted = 0;
@@ -40,20 +41,33 @@ const optionColors = {
   2: ["transparent goldenrod transparent red", "red", "white"], //red
 };
 
-startButton.addEventListener("click", () => {
+const messages = {
+  winning: "You are now the CreworkPati. You won $500,000",
+  losing: `Better luck next time.<br><img style="width: 250px; border-radius: 10px;" src="./lol.png" alt="">`,
+};
+
+// startButton.addEventListener("click", () => {
+function startGame(a) {
+  let timer = 0;
+  if (a == 0) {
+    threeTwoOneStart();
+    timer = 4000;
+  } else {
+    timer = 1000;
+  }
   //start game on button press
+  winningScreen.style.display = "none";
   namee.innerHTML = "Hi, " + username.value + "👋🏻";
   if (username.value == "") {
     namee.innerHTML = "Hi, Guest 👋🏻";
   }
-  threeTwoOneStart();
   gameStarted++;
   setTimeout(() => {
     //hide the video after playing it
     main.style.display = "none";
     videoDiv.style.display = "flex";
     videoDiv.play();
-  }, 4000);
+  }, timer);
 
   setTimeout(() => {
     videoDiv.style.display = "none";
@@ -62,7 +76,7 @@ startButton.addEventListener("click", () => {
     l();
     startQuestionTimer();
   }, 30000);
-});
+}
 
 function changeColorOfOptions(t, elements) {
   elements[0].style.borderColor = optionColors[t][0];
@@ -157,12 +171,14 @@ game.addEventListener("click", (e) => {
       //game reaches last question or answered wrong
       setTimeout(() => {
         game.style.display = "none";
-        main.style.display = "flex";
-        startButton.textContent = "Launch KBC";
-        seconds = 3;
+        winningScreen.style.display = "flex";
+        if (flag == false) {
+          document.querySelector(".winning-text").innerHTML = messages.losing;
+        } else {
+          document.querySelector(".winning-text").innerHTML = messages.winning;
+        }
         io = gameStarted * 10;
         callingQnAFromAPI(10);
-        username.value = "";
       }, 10000);
     }
   }
@@ -199,11 +215,9 @@ function startQuestionTimer() {
       }, 1500);
       setTimeout(() => {
         prizeWon.style.display = "none";
-        main.style.display = "flex";
-        startButton.textContent = "Launch KBC";
-        seconds = 3;
+        winningScreen.style.display = "flex";
+        document.querySelector(".winning-text").innerHTML = messages.losing;
         io = gameStarted * 10;
-        // callingQnAFromAPI(10)
         fetch10QnABruteForce(10);
         username.value = "";
       }, 5000);
@@ -280,7 +294,6 @@ function callingQnAFromAPI(x) {
   console.log(`api called ${count} times`);
   return x - pushed;
 }
-// callingQnAFromAPI(10)
 fetch10QnABruteForce(10);
 
 function fetch10QnABruteForce(q) {
@@ -311,4 +324,9 @@ function q(ioo) {
   option[3].textContent = optionsArr[ioo][3];
   suspense.play();
   suspense.loop = true;
+}
+
+if (prizeMoney[io] == prizeMoney[1]) {
+  game.style.display = "none";
+  winningScreen.style.display = "flex";
 }
