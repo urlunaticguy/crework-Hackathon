@@ -2,8 +2,9 @@ body {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
-    background: url("./bg-kbc.png");
-    background-size: cover;
+    background: url("./kbc_cut.png");
+    backdrop-filter: blur(3px);
+    background-size: contain;
     font-family: 'Clash Display', sans-serif;
     color: white;
 }
@@ -13,18 +14,19 @@ body {
 
 #intro-vid {
     width: 100vw;
-    height: 98vh;
+    height: 100vh;
     opacity: 1;
     animation: fade 26s linear;
     position: absolute;
     background-size: cover;
+    background-color: black;
 }
 
 h1 { margin: 0; }
 
 main {
     width: 100vw;
-    height: 98vh;
+    height: 100vh;
     flex-direction: column;
     gap: 1rem;
 }
@@ -47,7 +49,7 @@ main {
     100%{background-position:0% 50%}
 }
 #xyz img {
-    width: 120px;
+    width: 150px;
     margin-bottom: 10px;
 }
 
@@ -78,6 +80,7 @@ main {
     font-weight: 600;
     color: darkblue;
     border-radius: 5px;
+    text-align: center;
 }
 
 #start-btn {
@@ -191,7 +194,7 @@ main {
 }
 
 .option:hover {
-    color: aquamarine;
+    color: rgb(255, 153, 0);
     font-weight: bold;
 }
 

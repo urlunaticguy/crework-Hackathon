@@ -58,7 +58,6 @@ startButton.addEventListener("click", () => {
   setTimeout(() => {
     videoDiv.style.display = "none";
     game.style.display = "flex";
-    // game.css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'slow');
     stopTTO(); //stop the 321 setinterval timer
     l();
     startQuestionTimer();
@@ -111,7 +110,7 @@ game.addEventListener("click", (e) => {
       setTimeout(() => {
         money = money + 1000;
         prizeWon.style.display = "flex";
-        prizeWon.innerHTML = prizeMoney[io - 1];
+        prizeWon.innerHTML = `You won ${prizeMoney[io - 1]}`;
       }, 4500);
       setTimeout(() => {
         prizeWon.style.display = "none";
@@ -132,9 +131,13 @@ game.addEventListener("click", (e) => {
       }, 3000);
       setTimeout(() => {
         prizeWon.style.display = "flex";
-        prizeWon.innerHTML = `You won ${
-          prizeMoney[io - 2]
-        }. Better luck next time.`;
+        if (io == 1) {
+          prizeWon.innerHTML = `You won $0. Better luck next time.`;
+        } else {
+          prizeWon.innerHTML = `You won ${
+            prizeMoney[io - 2]
+          }. Better luck next time.`;
+        }
       }, 4500);
       setTimeout(() => {
         prizeWon.style.display = "none";
@@ -298,6 +301,9 @@ function l() {
 
 function q(ioo) {
   prizeHighlighter.children[10 - ioo].style.color = "goldenrod";
+  if (ioo > 0) {
+    prizeHighlighter.children[10 - ioo + 1].style.color = "white";
+  }
   question.textContent = jsonArr[ioo];
   option[0].textContent = optionsArr[ioo][0];
   option[1].textContent = optionsArr[ioo][1];
