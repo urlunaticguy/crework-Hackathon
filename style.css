@@ -2,7 +2,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
-    background: url("./intro-pic.jpeg");
+    background: url("./bg-kbc.png");
     background-size: cover;
     font-family: 'Clash Display', sans-serif;
     color: white;
@@ -17,6 +17,7 @@ body {
     opacity: 1;
     animation: fade 26s linear;
     position: absolute;
+    background-size: cover;
 }
 
 h1 { margin: 0; }
@@ -32,7 +33,7 @@ main {
     flex-direction: column;
     padding: 50px;
     height: 70vh;
-    background: linear-gradient(to bottom left,darkblue, blue,rgb(157, 10, 190), purple,white);
+    background: linear-gradient(to bottom left, darkblue, blue,rgb(157, 10, 190), purple,gold , goldenrod);
     background-size: 1000% 1000%;
     animation: bgGradient 15s ease infinite;
     letter-spacing: 1px;
@@ -198,14 +199,20 @@ main {
     background-color: #f9ba06;
 }
 
-#question-info {
-    width: 25vw;
+#name {
+    width: 15vw;
     height: 7vh;
     background-color: #3e0575;
     border-radius: 9999px;
     font-size: 1.2rem;
     border: 1px solid goldenrod;
-
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+    left: 20px;
+    border-bottom: 2px solid gold;
 }
 
 #timer-text {
@@ -240,6 +247,31 @@ main {
     display: none;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+#question-info {
+    width: 17vw;
+    height: 60vh;
+    background-color: #3e0575;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid goldenrod;
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    font-weight: 500;
+    line-height: 35px;
+}
+#prize {
+    font-weight: 800;
+    border-bottom: 5px solid gold;
+    margin-bottom: 10px;
+    font-size: 2rem;
 }
 
 /* fade animation for kbc intro video */
