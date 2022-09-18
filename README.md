@@ -2,6 +2,8 @@
 
 A game based on the popular TV show Kaun Banega Crorepati starring the legendary actor Amitabh Bachchan.
 
+[cleckout this presentation for more infomation about the project](https://pasteapp.com/p/7Ijt5Cm9gvF/s/uFAMazF4Noc?view=a7giMKIBBOO)
+
 ## homescreen
 
 ![home screen](./kbcReadmeImages/home.png)
