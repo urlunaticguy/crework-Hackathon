@@ -4,11 +4,6 @@ const main = document.querySelector("main");
 const game = document.querySelector("#game");
 const question = document.querySelector("#question-text");
 const option = document.querySelectorAll(".option");
-const opt1 = document.querySelector(".option-1");
-const opt2 = document.querySelector(".option-2");
-const opt3 = document.querySelector(".option-3");
-const opt4 = document.querySelector(".option-4");
-const opts = [opt1, opt2, opt3, opt4];
 const timer = document.querySelector("#timer-text");
 const username = document.querySelector("#username");
 const namee = document.querySelector("#name");
@@ -17,22 +12,24 @@ const prizeHighlighter = document.querySelector("#question-info");
 const winningScreen = document.querySelector(".winning-screen");
 let seconds = 3,
   money = 0,
-  gameStarted = 0;
+  gameStarted = 0,
+  flag = true;
 const prizeMoney = [
   "$500",
   "$1,000",
   "$1,500",
   "$3,000",
+  "$5,000",
   "$10,000",
   "$25,000",
   "$50,000",
   "$1,00,000",
   "$5,00,000",
 ];
-const suspense = new Audio("suspense.mp3");
-const lock = new Audio("lock.mp3");
-const right = new Audio("correct.mp3");
-const wrong = new Audio("wrong.mp3");
+const suspense = new Audio("./sounds/suspense.mp3");
+const lock = new Audio("./sounds/lock.mp3");
+const right = new Audio("./sounds/correct.mp3");
+const wrong = new Audio("./sounds/wrong.mp3");
 
 const optionColors = {
   4: ["transparent goldenrod transparent #3e0575", "#3e0575"], //violet
@@ -43,11 +40,14 @@ const optionColors = {
 
 const messages = {
   winning: "You are now the CreworkPati. You won $500,000.",
-  losing: `Better luck next time.<br><img style="width: 250px; border-radius: 10px;" src="./lol.png" alt="">`,
+  losing: `Better luck next time.<br><img style="width: 250px; border-radius: 10px;" src="./images/lol.png" alt="">`,
 };
 
-// startButton.addEventListener("click", () => {
 function startGame(a) {
+  flag = true;
+  for (let m = 1; m < 11; m++) {
+    prizeHighlighter.children[m].style.color = "white";
+  }
   let timer = 0;
   if (a == 0) {
     threeTwoOneStart();
@@ -72,6 +72,7 @@ function startGame(a) {
   setTimeout(() => {
     videoDiv.style.display = "none";
     game.style.display = "flex";
+    game.style.transition = "ease 200ms";
     stopTTO(); //stop the 321 setinterval timer
     l();
     startQuestionTimer();
@@ -87,12 +88,10 @@ function changeColorOfOptions(t, elements) {
 let io = 0; //flagship question traversal counter - do not touch
 
 game.addEventListener("click", (e) => {
-  let flag = true;
   let hasClass = e.target.classList.contains("option");
   let parent = e.target.parentElement;
   let childs = parent.children;
   let userAnswer = childs[1].innerHTML;
-  //   console.log(userAnswer);
 
   if (hasClass) {
     suspense.pause();
@@ -102,12 +101,11 @@ game.addEventListener("click", (e) => {
     changeColorOfOptions(0, childs); //0 for yellow
     lock.play();
     if (userAnswer.indexOf("&nbsp;") > -1) {
+      //removing spaces from options - api has a bug
       let kol = userAnswer.slice(0, -6);
-      console.log("space detected");
       userAnswer = kol;
       let jol = correctAns[io - 1].slice(0, -1);
       splCaseFlag = kol == jol;
-      console.log(`comparison bt kol and jol ${splCaseFlag}`);
     }
 
     if (userAnswer == correctAns[io - 1] || splCaseFlag) {
@@ -123,7 +121,7 @@ game.addEventListener("click", (e) => {
       setTimeout(() => {
         money = money + 1000;
         prizeWon.style.display = "flex";
-        prizeWon.innerHTML = `You won ${prizeMoney[io - 1]}`;
+        prizeWon.innerHTML = `🎉 You won ${prizeMoney[(io - 1) % 10]} 🎉`;
       }, 4500);
       setTimeout(() => {
         prizeWon.style.display = "none";
@@ -134,6 +132,7 @@ game.addEventListener("click", (e) => {
       }, 10000);
     } else {
       console.log("Wrong answer");
+      document.querySelector(".winning-text").innerHTML = messages.losing;
       flag = false;
       setTimeout(() => {
         //setting red
@@ -144,11 +143,11 @@ game.addEventListener("click", (e) => {
       }, 3000);
       setTimeout(() => {
         prizeWon.style.display = "flex";
-        if (io == 1) {
+        if (io % 10 == 1) {
           prizeWon.innerHTML = `You won $0. Better luck next time.`;
         } else {
           prizeWon.innerHTML = `You won ${
-            prizeMoney[io - 2]
+            prizeMoney[(io - 2) % 10]
           }. Better luck next time.`;
         }
       }, 4500);
@@ -161,7 +160,11 @@ game.addEventListener("click", (e) => {
       }, 10000);
     }
     stopQuestionTimer();
-    if (io < 10 && flag) {
+    if (io % 10 < 10 && flag) {
+      if (io % 10 == 9) {
+        flag = false;
+        document.querySelector(".winning-text").innerHTML = messages.winning;
+      }
       setTimeout(() => {
         l();
         startQuestionTimer();
@@ -171,11 +174,6 @@ game.addEventListener("click", (e) => {
       setTimeout(() => {
         game.style.display = "none";
         winningScreen.style.display = "flex";
-        if (flag == false) {
-          document.querySelector(".winning-text").innerHTML = messages.losing;
-        } else {
-          document.querySelector(".winning-text").innerHTML = messages.winning;
-        }
         io = gameStarted * 10;
         callingQnAFromAPI(10);
       }, 10000);
@@ -209,7 +207,7 @@ function startQuestionTimer() {
         suspense.pause();
         suspense.currentTime = 0;
         prizeWon.style.display = "flex";
-        prizeWon.innerHTML = prizeMoney[io - 1];
+        prizeWon.innerHTML = prizeMoney[(io - 1) % 10];
         money = 0;
       }, 1500);
       setTimeout(() => {
@@ -244,8 +242,8 @@ function shuffle(arr) {
 //fix the difficulty of questions order in api calls here
 let difficulty = [
   "easy",
-  "easy",
-  "easy",
+  "medium",
+  "medium",
   "medium",
   "medium",
   "medium",
@@ -261,7 +259,6 @@ let jsonArr = [],
   pushed = 0;
 function callingQnAFromAPI(x) {
   for (let i = 0; i < x; i++) {
-    //calling 10 questions with different difficulties
     let url = `https://the-trivia-api.com/api/questions?limit=1&difficulty=${difficulty[i]}`;
     axios.get(url).then((res) => {
       count++;
@@ -276,7 +273,6 @@ function callingQnAFromAPI(x) {
           //checking for options length
           pushed++;
           jsonArr.push(res.data[0].question);
-          console.log(res.data[0].question.length);
           let arr = [
             res.data[0].correctAnswer,
             res.data[0].incorrectAnswers[0],
@@ -285,7 +281,6 @@ function callingQnAFromAPI(x) {
           ];
           optionsArr.push(shuffle(arr));
           correctAns.push(res.data[0].correctAnswer);
-          console.log(`Correct Answer is ${res.data[0].correctAnswer}`);
         }
       }
     });
@@ -303,8 +298,6 @@ function fetch10QnABruteForce(q) {
   }
 }
 
-console.log(jsonArr);
-console.log(correctAns);
 function l() {
   game.style.pointerEvents = "auto";
   q(io);
@@ -312,9 +305,9 @@ function l() {
 }
 
 function q(ioo) {
-  prizeHighlighter.children[10 - ioo].style.color = "goldenrod";
-  if (ioo > 0) {
-    prizeHighlighter.children[10 - ioo + 1].style.color = "white";
+  prizeHighlighter.children[10 - (ioo % 10)].style.color = "goldenrod";
+  if (ioo % 10 > 0) {
+    prizeHighlighter.children[10 - (ioo % 10) + 1].style.color = "white";
   }
   question.textContent = jsonArr[ioo];
   option[0].textContent = optionsArr[ioo][0];
@@ -323,9 +316,4 @@ function q(ioo) {
   option[3].textContent = optionsArr[ioo][3];
   suspense.play();
   suspense.loop = true;
-}
-
-if (prizeMoney[io] == prizeMoney[1]) {
-  game.style.display = "none";
-  winningScreen.style.display = "flex";
 }
