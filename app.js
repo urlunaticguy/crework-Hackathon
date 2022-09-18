@@ -42,7 +42,7 @@ const optionColors = {
 };
 
 const messages = {
-  winning: "You are now the CreworkPati. You won $500,000",
+  winning: "You are now the CreworkPati. You won $500,000.",
   losing: `Better luck next time.<br><img style="width: 250px; border-radius: 10px;" src="./lol.png" alt="">`,
 };
 

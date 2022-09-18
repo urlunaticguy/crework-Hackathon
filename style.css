@@ -207,7 +207,7 @@ main {
 
 .option:hover, .play-again:hover {
     color: rgb(255, 153, 0);
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .option-selected {
@@ -256,13 +256,14 @@ main {
     left: -400px;
     z-index: 2;
     border-radius: 5px;
-    border: 2px solid white;
+    border: 2px solid goldenrod;
     font-size: 3rem;
     font-weight: lighter;
     display: none;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: gold;
 }
 
 #question-info {
@@ -320,6 +321,7 @@ main {
     border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
+    font: inherit;
 }
 
 /* fade animation for kbc intro video */
