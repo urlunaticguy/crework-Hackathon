@@ -18,7 +18,11 @@ a {
     text-decoration: none;
     color: white;
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: 500;
+}
+
+a:hover {
+    color: goldenrod;
 }
 
 .flex-jcc { display: flex; justify-content: center; }
@@ -205,8 +209,8 @@ main {
     font-weight: lighter;
 }
 
-.option:hover, .play-again:hover {
-    color: rgb(255, 153, 0);
+.option:hover {
+    color: gold;
     font-weight: normal;
 }
 
@@ -276,7 +280,8 @@ main {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border: 3px solid goldenrod;
+    border: 2px solid goldenrod;
+    border-bottom: 4px solid gold;
     position: absolute;
     top: 120px;
     right: 20px;
@@ -301,6 +306,8 @@ main {
     flex-direction: column;
     background-color: #3e0575;
     border: 3px solid goldenrod;
+    border-bottom: 5px solid gold;
+    border-top: 5px solid gold;
     border-radius: 15px;
     margin-bottom: 2rem;
 }
@@ -322,6 +329,15 @@ main {
     cursor: pointer;
     margin-top: 10px;
     font: inherit;
+    transition: 0.3s;
+    border-top: 4px solid gold;
+    border-bottom: 4px solid gold;
+}
+
+.play-again:hover {
+    color: black;
+    background: gold;
+    font-weight: normal;
 }
 
 /* fade animation for kbc intro video */
