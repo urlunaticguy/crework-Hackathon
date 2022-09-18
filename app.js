@@ -87,18 +87,17 @@ function changeColorOfOptions(t, elements) {
 let io = 0; //flagship question traversal counter - do not touch
 
 game.addEventListener("click", (e) => {
-  game.style.pointerEvents = "none";
   let flag = true;
   let hasClass = e.target.classList.contains("option");
   let parent = e.target.parentElement;
   let childs = parent.children;
   let userAnswer = childs[1].innerHTML;
-  console.log(userAnswer);
-  suspense.pause();
-  suspense.currentTime = 0;
+  //   console.log(userAnswer);
 
   if (hasClass) {
-    //setting yellow on click
+    suspense.pause();
+    suspense.currentTime = 0;
+    game.style.pointerEvents = "none";
     let splCaseFlag = false;
     changeColorOfOptions(0, childs); //0 for yellow
     lock.play();

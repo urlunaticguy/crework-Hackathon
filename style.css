@@ -253,7 +253,8 @@ main {
     width: 57vw;
     height: 10rem;
     top: 200px;
-    left: -400px;
+    left: -28vw;
+    /* left: -400px; */
     z-index: 2;
     border-radius: 5px;
     border: 2px solid goldenrod;
